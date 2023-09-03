@@ -48,10 +48,12 @@ const CitySearch = ({
         {isError && (
           <div className="flex items-center gap-2 pl-4 pt-2">
             <ExclamationCircleIcon
-              className="h-4 w-4 text-red-500"
+              className="h-5 w-5 text-red-500"
               aria-hidden="true"
             />
-            <p className="text-xs text-red-500">Something went wrong.</p>
+            <p className="text-xs text-red-500 font-medium">
+              Something went wrong.
+            </p>
           </div>
         )}
         {isLoadingCities && (
