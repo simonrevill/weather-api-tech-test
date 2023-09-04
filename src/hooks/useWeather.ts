@@ -8,8 +8,8 @@ type UseWeatherProps = {
 };
 
 const useWeather = ({ coordinates }: UseWeatherProps) => {
-  const { data } = useQuery<WeatherLocationResponse>({
-    enabled: !!coordinates.length,
+  const { data, isFetching } = useQuery<WeatherLocationResponse>({
+    enabled: !!coordinates,
     queryKey: ["weather", coordinates],
     queryFn: () =>
       API.get(`/current.json?key=${API_KEY}&q=${coordinates}&aqi=no`).then(
@@ -17,8 +17,11 @@ const useWeather = ({ coordinates }: UseWeatherProps) => {
       ),
   });
 
+  console.log(isFetching);
+
   return {
     data,
+    isLoadingWeatherData: isFetching,
   };
 };
 
