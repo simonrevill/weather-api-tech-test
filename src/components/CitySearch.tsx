@@ -4,6 +4,7 @@ import { Combobox } from "@headlessui/react";
 import ExclamationCircleIcon from "@/components/ExclamationCircleIcon";
 import CheckIcon from "@/components/CheckIcon";
 import ChevronUpDownIcon from "@/components/ChevronUpDownIcon";
+import SpinnerIcon from "./SpinnerIcon";
 import { LocationResponse } from "@/types";
 
 type CitySearchProps = {
@@ -57,7 +58,12 @@ const CitySearch = ({
           </div>
         )}
         {isLoadingCities && (
-          <Combobox.Options className="absolute bg-white left-0 right-0 flex flex-col border mt-2 rounded-md text-sm md:text-base shadow">
+          <Combobox.Options className="absolute bg-white left-0 right-0 flex justify-center items-center gap-2 border mt-2 rounded-md text-sm md:text-base shadow">
+            <SpinnerIcon
+              className="h-5 w-5 text-slate-400 animate-spin"
+              aria-hidden="true"
+              data-testid="search-icon"
+            />
             <p className="flex justify-center pr-4 py-2">Loading...</p>
           </Combobox.Options>
         )}
