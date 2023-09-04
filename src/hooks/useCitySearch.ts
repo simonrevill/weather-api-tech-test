@@ -20,7 +20,7 @@ const useCitySearch = () => {
     setSelectedCity(value);
   };
 
-  const { data, isLoading, isError } = useQuery<LocationResponse[]>({
+  const { data, isFetching, isError } = useQuery<LocationResponse[]>({
     enabled: !!debouncedSearchQuery,
     queryKey: ["cities", debouncedSearchQuery],
     queryFn: () =>
@@ -34,7 +34,7 @@ const useCitySearch = () => {
     handleChangeQuery,
     selectedCity: selectedCity,
     handleSetSelectedCity,
-    isLoadingCities: isLoading && !!debouncedSearchQuery,
+    isLoadingCities: isFetching && !!debouncedSearchQuery,
     cities: data,
     noResults: data?.length === 0,
     coordinates: selectedCity?.split(" | ")[1] ?? "",
