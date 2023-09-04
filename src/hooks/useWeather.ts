@@ -17,8 +17,6 @@ const useWeather = ({ coordinates }: UseWeatherProps) => {
       ),
   });
 
-  console.log(isFetching);
-
   return {
     data,
     isLoadingWeatherData: isFetching,
