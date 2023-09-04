@@ -18,7 +18,7 @@ export default function Home() {
     isError,
   } = useCitySearch();
 
-  const { data } = useWeather({
+  const { data, isLoadingWeatherData } = useWeather({
     coordinates,
   });
 
@@ -35,7 +35,7 @@ export default function Home() {
         noResults={noResults}
         isError={isError}
       />
-      <WeatherView data={data} />
+      <WeatherView data={data} isLoading={isLoadingWeatherData} />
     </main>
   );
 }
