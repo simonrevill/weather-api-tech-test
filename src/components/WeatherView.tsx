@@ -1,12 +1,31 @@
 import Image from "next/image";
 import { WeatherLocationResponse } from "@/types";
 import MagnifyingGlassIcon from "@/components/MagnifyingGlassIcon";
+import SpinnerIcon from "@/components/SpinnerIcon";
 
 type WeatherViewProps = {
   data: WeatherLocationResponse | undefined;
+  isLoading: boolean;
 };
 
-const WeatherView = ({ data }: WeatherViewProps) => {
+const WeatherView = ({ data, isLoading }: WeatherViewProps) => {
+  if (isLoading) {
+    return (
+      <div className="flex-1 flex justify-center items-center">
+        <div className="flex flex-col items-center gap-2">
+          <SpinnerIcon
+            className="h-12 w-12 md:h-24 md:w-24 text-slate-400 animate-spin"
+            aria-hidden="true"
+            data-testid="search-icon"
+          />
+          <h2 className="text-slate-400" data-testid="search-text">
+            Loading...
+          </h2>
+        </div>
+      </div>
+    );
+  }
+
   if (!data) {
     return (
       <div className="flex-1 flex justify-center items-center">
